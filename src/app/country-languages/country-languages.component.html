@@ -1,0 +1,22 @@
+<h2 class="text-center mb-4 text-white mt-2">Languages Spoken in {{countryName}}</h2>
+<div class="container mt-4">
+  <div class="table-responsive">
+    <table class="table table-bordered text-center" *ngIf="!loading">
+      <thead class="table-primary">
+        <tr>
+          <th>Language</th>
+          <th>Official</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lang of languages">
+          <td>{{ lang.language }}</td>
+          <td>
+            <span *ngIf="lang.official == 1" class="text-success">✔️</span>
+            <span *ngIf="lang.official != 1" class="text-danger">❌</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

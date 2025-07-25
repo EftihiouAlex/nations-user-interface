@@ -1,0 +1,53 @@
+<div class="container mt-4">
+  <h3 class="mb-4 text-center text-white mt-2">Countries Statistics</h3>
+
+ <div class="d-flex align-items-center gap-3 mb-3">
+
+  <div>
+    <label for="yearFrom" class="form-label text-white mb-1">Year From:</label>
+    <select id="yearFrom" class="form-select"  [(ngModel)]="yearFrom" name="yearFrom">
+        <option [ngValue]="null">-- From --</option>
+      <option *ngFor="let year of years" [value]="year" [disabled]="yearTo !== null && year > yearTo">{{ year }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="yearTo" class="form-label text-white mb-1">Year To:</label>
+    <select id="yearTo" class="form-select"  [(ngModel)]="yearTo" name="yearTo">
+        <option [ngValue]="null">-- To --</option>
+      <option *ngFor="let year of years" [value]="year" [disabled]="yearFrom !== null && year < yearFrom">{{ year }} </option>
+    </select>
+  </div>
+
+  <div>
+    <button class="btn btn-primary mt-4" (click)="applyFiltersOnYears()">Apply</button>
+    <button class="btn btn-secondary mt-4 ms-4" (click)="clearFilter()">Clear</button>
+  </div>
+
+</div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle text-center">
+      <thead class="table-primary">
+        <tr>
+          <th>Continent</th>
+          <th>Region</th>
+          <th>Country</th>
+          <th>Year</th>
+          <th>Population</th>
+          <th>GDP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of countriesStats">
+          <td>{{ country.continentName }}</td>
+          <td>{{ country.regionName }}</td>
+          <td>{{ country.countryName }}</td>
+          <td>{{ country.year }}</td>
+          <td>{{ country.population }}</td>
+          <td>{{ country.gdp }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

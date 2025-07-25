@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h3 class="mb-4 text-center text-white mt-2">Countries Max GDP Year</h3>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle text-center">
+      <thead class="table-primary">
+        <tr>
+          <th>Country Name</th>
+          <th>Country Code</th>
+          <th>Year</th>
+          <th>Population</th>
+          <th>GDP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of countriesHighestGdp">
+          <td>{{ country.countryName }}</td>
+          <td>{{ country.countryCode3 }}</td>
+          <td>{{ country.year }}</td>
+          <td>{{ country.population}}</td>
+          <td>{{ country.gdp}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
