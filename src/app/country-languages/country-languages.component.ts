@@ -3,6 +3,7 @@ import { Languages } from '../models/languages';
 import { Router } from '@angular/router';
 import { CountriesService } from '../countries.service';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-country-languages',
@@ -15,10 +16,16 @@ export class CountryLanguagesComponent implements OnInit {
   countryName = "";
   loading = true;
 
-  constructor(private countriesService: CountriesService, private router: Router) {}
+  constructor(private countriesService: CountriesService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.getCountryLanguages(1);
+     this.route.paramMap.subscribe(params => {
+      let idParam = params.get('id');
+      if (idParam) {
+        let id =+ idParam;
+        this.getCountryLanguages(id);
+      }
+    });
   }
 
   getCountryLanguages(id: number) {
